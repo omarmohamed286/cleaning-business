@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft, Users, MessageCircle, Star, Search, Target, CheckCircle, AlertTriangle, Lightbulb, TrendingUp, Award, Video, CreditCard, Calendar, DollarSign } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import DFYCallout from './DFYCallout';
 
-interface Day20Props {
-  onBack: () => void;
-}
-
-function Day20({ onBack }: Day20Props) {
+function Day20() {
+  const navigate = useNavigate();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -115,13 +115,17 @@ function Day20({ onBack }: Day20Props) {
     "And that works in your city."
   ];
 
+  const onNavigateToDay27 = () => {
+    navigate('/day27');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <button 
-            onClick={onBack}
+            onClick={() => navigate('/')}
             className="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200 mb-2"
           >
             <ArrowLeft className="h-5 w-5 mr-2" />
@@ -139,6 +143,9 @@ function Day20({ onBack }: Day20Props) {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* DFY Callout */}
+        <DFYCallout onNavigateToDay27={onNavigateToDay27} />
+        
         {/* Introduction */}
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg mb-8">
           <div className="flex items-center mb-4">
@@ -385,15 +392,18 @@ function Day20({ onBack }: Day20Props) {
         {/* Navigation */}
         <div className="flex justify-between items-center mt-12 pt-8 border-t">
           <button 
-            onClick={onBack}
+            onClick={() => navigate('/day19')}
             className="flex items-center text-gray-600 hover:text-gray-800 transition-colors duration-200"
           >
             <ArrowLeft className="h-5 w-5 mr-2" />
-            Back to All Days
+            Previous: Day 19
           </button>
-          <div className="text-gray-500">
+          <button
+            onClick={() => navigate('/day21')}
+            className="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200"
+          >
             Next: Day 21 - Why Entrepreneurship Hasn't Worked
-          </div>
+          </button>
         </div>
       </div>
     </div>

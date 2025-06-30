@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft, Rocket, CheckCircle, MessageCircle, Phone, Mail, Globe, Users, Star, TrendingUp, Target, Zap, Award, Calendar, MapPin, Camera, Heart, Lightbulb } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import DFYCallout from './DFYCallout';
 
-interface Day23Props {
-  onBack: () => void;
-}
-
-function Day23({ onBack }: Day23Props) {
+function Day23() {
+  const navigate = useNavigate();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -178,13 +178,17 @@ function Day23({ onBack }: Day23Props) {
     { stat: "$20M", description: "Total sales using this exact system" }
   ];
 
+  const onNavigateToDay27 = () => {
+    navigate('/day27');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <button 
-            onClick={onBack}
+            onClick={() => navigate('/')}
             className="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200 mb-2"
           >
             <ArrowLeft className="h-5 w-5 mr-2" />
@@ -202,6 +206,9 @@ function Day23({ onBack }: Day23Props) {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* DFY Callout */}
+        <DFYCallout onNavigateToDay27={onNavigateToDay27} />
+        
         {/* Introduction */}
         <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white p-8 rounded-lg mb-8">
           <div className="flex items-center mb-4">
@@ -555,15 +562,18 @@ function Day23({ onBack }: Day23Props) {
         {/* Navigation */}
         <div className="flex justify-between items-center mt-12 pt-8 border-t">
           <button 
-            onClick={onBack}
+            onClick={() => navigate('/day22')}
             className="flex items-center text-gray-600 hover:text-gray-800 transition-colors duration-200"
           >
             <ArrowLeft className="h-5 w-5 mr-2" />
-            Back to All Days
+            Previous: Day 22
           </button>
-          <div className="text-gray-500">
+          <button
+            onClick={() => navigate('/day24')}
+            className="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200"
+          >
             Next: Day 24 - Design for Conversions
-          </div>
+          </button>
         </div>
       </div>
     </div>
