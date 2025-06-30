@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft, MapPin, TrendingUp, Users, DollarSign, Clock, Target, CheckCircle, Building, Globe } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import DFYCallout from './DFYCallout';
 
-interface Day2Props {
-  onBack: () => void;
-}
-
-function Day2({ onBack }: Day2Props) {
+function Day2() {
+  const navigate = useNavigate();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -42,6 +42,14 @@ function Day2({ onBack }: Day2Props) {
     "Repeat & scale"
   ];
 
+  const onBack = () => {
+    navigate('/');
+  };
+
+  const onNavigateToDay27 = () => {
+    navigate('/day27');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
@@ -66,6 +74,9 @@ function Day2({ onBack }: Day2Props) {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* DFY Callout */}
+        <DFYCallout onNavigateToDay27={onNavigateToDay27} />
+        
         {/* Introduction */}
         <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-8 rounded-lg mb-8">
           <div className="flex items-center mb-4">
@@ -260,15 +271,18 @@ function Day2({ onBack }: Day2Props) {
         {/* Navigation */}
         <div className="flex justify-between items-center mt-12 pt-8 border-t">
           <button 
-            onClick={onBack}
+            onClick={() => navigate('/day1')}
             className="flex items-center text-gray-600 hover:text-gray-800 transition-colors duration-200"
           >
             <ArrowLeft className="h-5 w-5 mr-2" />
-            Back to All Days
+            Previous: Day 1
           </button>
-          <div className="text-gray-500">
+          <button
+            onClick={() => navigate('/day3')}
+            className="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200"
+          >
             Next: Day 3 - How To Choose Your Domain
-          </div>
+          </button>
         </div>
       </div>
     </div>

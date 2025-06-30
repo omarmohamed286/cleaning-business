@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft, TrendingUp, CheckCircle, Target, DollarSign, Clock, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import DFYCallout from './DFYCallout';
 
-interface Day1Props {
-  onBack: () => void;
-  onNavigateToDay27: () => void;
-}
-
-function Day1({ onBack, onNavigateToDay27 }: Day1Props) {
+function Day1() {
+  const navigate = useNavigate();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -41,6 +39,14 @@ function Day1({ onBack, onNavigateToDay27 }: Day1Props) {
     { point: "Scalable", description: "Can grow without your direct involvement" },
     { point: "Local market", description: "Serves local customers with real needs" }
   ];
+
+  const onBack = () => {
+    navigate('/');
+  };
+
+  const onNavigateToDay27 = () => {
+    navigate('/day27');
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -227,9 +233,12 @@ function Day1({ onBack, onNavigateToDay27 }: Day1Props) {
             <ArrowLeft className="h-5 w-5 mr-2" />
             Back to All Days
           </button>
-          <div className="text-gray-500">
+          <button
+            onClick={() => navigate('/day2')}
+            className="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200"
+          >
             Next: Day 2 - Choosing Your City and Business Model
-          </div>
+          </button>
         </div>
       </div>
     </div>

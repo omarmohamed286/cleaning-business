@@ -1,11 +1,22 @@
 import React from 'react';
 import { Rocket, DollarSign, CheckCircle, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface DFYCalloutProps {
-  onNavigateToDay27: () => void;
+  onNavigateToDay27?: () => void;
 }
 
 function DFYCallout({ onNavigateToDay27 }: DFYCalloutProps) {
+  const navigate = useNavigate();
+  
+  const handleNavigate = () => {
+    if (onNavigateToDay27) {
+      onNavigateToDay27();
+    } else {
+      navigate('/day27');
+    }
+  };
+
   return (
     <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6 rounded-lg mb-8 border-2 border-orange-300 shadow-lg">
       <div className="flex items-center justify-between">
@@ -21,7 +32,7 @@ function DFYCallout({ onNavigateToDay27 }: DFYCalloutProps) {
           </div>
         </div>
         <button
-          onClick={onNavigateToDay27}
+          onClick={handleNavigate}
           className="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center"
         >
           <DollarSign className="h-5 w-5 mr-2" />
