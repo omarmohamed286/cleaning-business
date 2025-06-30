@@ -1,6 +1,5 @@
 import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import { Calendar, TrendingUp, Users, DollarSign, Clock, ArrowRight, CheckCircle, Star } from 'lucide-react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import Day1 from './components/Day1';
 import Day2 from './components/Day2';
@@ -61,6 +60,8 @@ function App() {
       <Route path="/day25" element={<Day25 />} />
       <Route path="/day26" element={<Day26 />} />
       <Route path="/day27" element={<Day27 />} />
+      {/* Catch all route - redirect to home */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }

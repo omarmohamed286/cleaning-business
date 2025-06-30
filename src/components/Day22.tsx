@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ArrowLeft, Video, Users, Play, Globe, Clock, Heart, DollarSign, Zap, AlertTriangle, Target, TrendingUp, Award, MessageCircle, Lightbulb } from 'lucide-react';
+import { ArrowLeft, Video, Users, Play, Globe, Clock, Heart, DollarSign, Zap, AlertTriangle, Target, TrendingUp, Award, MessageCircle, Lightbulb, CheckCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import DFYCallout from './DFYCallout';
 
